@@ -47,14 +47,14 @@ return [
             'hash' => false,
         ],
 
-        'contractor' => [
+        'contractors' => [
             'driver' => 'session',
-            'provider' => 'contractor',
+            'provider' => 'contractors',
         ],
         
-        'trucker' => [
+        'truckers' => [
             'driver' => 'session',
-            'provider' => 'trucker',
+            'provider' => 'truckers',
         ]
     ],
 
@@ -81,14 +81,14 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        'contractor' => [
+        'contractors' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Contractor::class,
+            'model' => App\Models\Contractors::class,
         ],
 
-        'trucker' => [
+        'truckers' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Trucker::class,
+            'model' => App\Models\Truckers::class,
         ],
 
         // 'users' => [

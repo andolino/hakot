@@ -68,18 +68,18 @@
                     @guest
                         {{-- @if (Route::has('login')) --}}
                         {{-- login/contractors
-                        login/truckers --}}
+                        login/truckerss --}}
 
                         @if (!$logged_in)
                             <li class="nav-item mr-3">
                                 {{-- {{ route('login') }} --}}
-                                <a href="javascript:void(0);" class="nav-link btn-default rounded-0" data-toggle="modal" data-target="#custom-modal-register-contractor">{{ __('Login') }}</a>
+                                <a href="javascript:void(0);" class="nav-link btn-default rounded-0" data-toggle="modal" data-target="#custom-modal-register-contractors">{{ __('Login') }}</a>
                             </li>
                         @endif
                         @if (!$logged_in)
                             <li class="nav-item">
                                 {{-- <a class="nav-link btn-green rounded" href="{{ route('register') }}">{{ __('Register') }}</a> --}}
-                                <a href="javascript:void(0);" class="nav-link btn-green rounded-0" data-toggle="modal" data-target="#custom-modal-register-contractor">{{ __('Register') }}</a>
+                                <a href="javascript:void(0);" class="nav-link btn-green rounded-0" data-toggle="modal" data-target="#custom-modal-register-contractors">{{ __('Register') }}</a>
                             </li>
                             <!-- Modal -->
                         @endif
@@ -108,8 +108,8 @@
         @yield('content')
     </main>
     <div id="app">
-        {{-- Modal contractor Signup--}}
-        <div class="modal fade custom-modal-register" id="custom-modal-register-contractor" tabindex="-1" role="dialog" aria-labelledby="custom-modal-title" aria-hidden="true">
+        {{-- Modal contractors Signup--}}
+        <div class="modal fade custom-modal-register" id="custom-modal-register-contractors" tabindex="-1" role="dialog" aria-labelledby="custom-modal-title" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     {{-- <div class="modal-header">
@@ -120,8 +120,8 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 signup-login-left p-0">
                                 <div class="row">
-                                    <div class="col-lg-12 contractor-sign-up-frm">
-                                        <signup-form-contractor base_url="{{ url('') }}"></signup-form-contractor>
+                                    <div class="col-lg-12 contractors-sign-up-frm">
+                                        <signup-form-contractors base_url="{{ url('') }}"></signup-form-contractors>
                                         <div class="row p-3">
                                             <div class="col-5 border border-secondary" style="height:0;"></div>
                                             <div class="col-2 text-center" style="line-height: 0 !important;">Or</div>
@@ -133,7 +133,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-12 text-center font-style-undeline">
-                                                <a href="javascript:void(0);" class="text-dark font-14" data-toggle="modal" data-target="#custom-modal-register-trucker" onclick="$('#custom-modal-register-contractor').modal('hide');"><u>Sign Up as Trucker</u></a>
+                                                <a href="javascript:void(0);" class="text-dark font-14" data-toggle="modal" data-target="#custom-modal-register-truckers" onclick="$('#custom-modal-register-contractors').modal('hide');"><u>Sign Up as Truckers</u></a>
                                             </div>
                                         </div>
                                     </div>
@@ -158,8 +158,8 @@
                 </div>
             </div>
         </div>
-        {{-- Modal truckers Signup--}}
-        <div class="modal fade custom-modal-register" id="custom-modal-register-trucker" tabindex="-1" role="dialog" aria-labelledby="custom-modal-title" aria-hidden="true">
+        {{-- Modal truckerss Signup--}}
+        <div class="modal fade custom-modal-register" id="custom-modal-register-truckers" tabindex="-1" role="dialog" aria-labelledby="custom-modal-title" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     {{-- <div class="modal-header">
@@ -170,8 +170,8 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 signup-login-left p-0">
                                 <div class="row">
-                                    <div class="col-lg-12 contractor-sign-up-frm">
-                                        <signup-form-trucker base_url="{{ url('') }}"></signup-form-trucker>
+                                    <div class="col-lg-12 contractors-sign-up-frm">
+                                        <signup-form-truckers base_url="{{ url('') }}"></signup-form-truckers>
                                         <div class="row p-3">
                                             <div class="col-5 border border-secondary" style="height:0;"></div>
                                             <div class="col-2 text-center" style="line-height: 0 !important;">Or</div>
@@ -187,7 +187,7 @@
                                                     href="javascript:void(0);" 
                                                     class="text-dark font-14" 
                                                     data-toggle="modal" 
-                                                    data-target="#custom-modal-register-contractor" onclick="$('#custom-modal-register-trucker').modal('hide');"><u>Sign Up as Contractor</u></a>
+                                                    data-target="#custom-modal-register-contractors" onclick="$('#custom-modal-register-truckers').modal('hide');"><u>Sign Up as Contractors</u></a>
                                             </div>
                                         </div>
                                     </div>

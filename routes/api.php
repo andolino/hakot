@@ -24,9 +24,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('/todo', 'App\Http\Controllers\TodoController');
-Route::post('/register/contractor', [RegisterController::class,'createContractor']);
-Route::post('/register/trucker', [RegisterController::class,'createTrucker']);
+Route::post('/register/contractors', [RegisterController::class,'createContractors']);
+Route::post('/register/truckers', [RegisterController::class,'createTruckers']);
 
-Route::post('/login/contractor', [LoginController::class,'contractorLogin'])->name('login-contractor');
-Route::post('/login/trucker', [LoginController::class,'truckerLogin'])->name('login-trucker');
+Route::post('/login/contractors', [LoginController::class,'contractorsLogin'])->name('login-contractors');
+Route::post('/login/truckers', [LoginController::class,'truckersLogin'])->name('login-truckers');
 // Route::get('/todo', [TodoController::class, 'index']);

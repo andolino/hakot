@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Teachers;
-use App\Models\Students;
+use App\Models\Contractors;
+use App\Models\Truckers;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -40,8 +40,8 @@ class RegisterController extends Controller
      */
     public function __construct(){
         $this->middleware('guest');
-        $this->middleware('guest:contractor');
-        $this->middleware('guest:trucker');
+        $this->middleware('guest:contractors');
+        $this->middleware('guest:truckers');
     }
 
     /**
@@ -55,16 +55,16 @@ class RegisterController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function showContractorRegisterForm(){
+    public function showContractorsRegisterForm(){
         $countries = DB::table('countries')->get();
-        return view('auth.contractor-registration', ['url' => 'contractor', 'countries' => $countries]);
+        return view('auth.contractors-registration', ['url' => 'contractors', 'countries' => $countries]);
     }
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function showTruckerRegisterForm(){
-        return view('auth.register', ['url' => 'trucker']);
+    public function showTruckersRegisterForm(){
+        return view('auth.register', ['url' => 'truckers']);
     }
 
     /**
@@ -79,10 +79,10 @@ class RegisterController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    protected function createContractor(Request $request){
+    protected function createContractors(Request $request){
         $request->validate([
             // 'username'        => 'required|string|max:255',
-            'email'           => 'required|string|email|max:255|unique:contractor',
+            'email'           => 'required|string|email|max:255|unique:contractors',
             'password'        => 'required|string|min:6'
             // 'password'        => 'required|string|min:6|confirmed'
             // 'lastname'        => 'required|string',
@@ -93,7 +93,7 @@ class RegisterController extends Controller
             // 'objective_title' => 'required|string',
             // 'objective_text'  => 'required|string'
         ]);
-        Teachers::create([
+        Contractors::create([
             // 'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password)
@@ -105,7 +105,7 @@ class RegisterController extends Controller
             // 'objective_title' => $request->objective_title,
             // 'objective_text'  => $request->objective_text
         ]);
-        return redirect()->intended('login/contractor');
+        return redirect()->intended('login/contractors');
     }
 
     /**
@@ -113,18 +113,18 @@ class RegisterController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    protected function createTrucker(Request $request){
+    protected function createTruckers(Request $request){
         $request->validate([
             // 'username' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:trucker',
+            'email' => 'required|string|email|max:255|unique:truckers',
             'password' => 'required|string|min:6'
             // 'password' => 'required|string|min:6|confirmed'
         ]);
-        Students::create([
+        Truckers::create([
             // 'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password)
         ]);
-        return redirect()->intended('login/trucker');
+        return redirect()->intended('login/truckers');
     }
 }

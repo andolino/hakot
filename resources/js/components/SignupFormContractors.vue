@@ -1,15 +1,15 @@
 <template>
-  <div>
+	<div >
 		<div v-if="showFormSignUp">
 			<h2 class="text-center pb-3 font-weight-bold">Sign Up</h2>
-			<form @submit.prevent="signupTrucker">
+			<form @submit.prevent="signupContractors">
 				<div class="form-group input-group mb-0">
 						<input 
 							type="email" 
 							v-model="form.email" 
 							:class="{'is-invalid' : form.errors.has('email')}" 
 							class="form-control text-center input-custom font-14 mb-3" 
-							id="trucker-email" 
+							id="contractors-email" 
 							name="email" 
 							placeholder="Email">
 				</div>
@@ -20,7 +20,7 @@
 							v-model="form.password"
 							:class="{'is-invalid' : form.errors.has('password')}" 
 							class="form-control text-center input-custom font-14 mb-3" 
-							id="trucker-password" 
+							id="contractors-password" 
 							name="password" 
 							placeholder="Create Password">
 				</div>
@@ -29,27 +29,27 @@
 				<button type="submit" class="btn btn-green font-14 text-center w-100 btn-cust-radius">Sign Up</button>
 				<input type="hidden" name="_token" v-bind:value="csrf">
 			</form>
-			<small id="emailHelp" class="form-text text-center text-muted">By clicking Sign Up, you agree to Preply's Terms of Service and Privacy Policy</small>
-			<p class="text-center mt-3">Already have an account? <a href="javascript:void(0);" @click="showTruckerLogin" class="text-warning">Login</a></p>
+
+			<small id="emailHelp" class="form-text text-center text-muted">Bys clicking Sign Up, you agree to Preply's Terms of Service and Privacy Policy</small>
+			<p class="text-center mt-3">Already have an account? <a href="javascript:void(0);" @click="showContractorsLogin" class="text-warning">Login</a></p>
 		</div>
 		<div v-if="showFormLogin">
-			<TruckerLogin :base_url="base_url"/>
-			<p class="text-center mt-3">Create an account? <a href="javascript:void(0);" @click="showTruckerSignUp" class="text-warning">Signup</a></p>
+			<ContractorsLogin :base_url="base_url"/>
+			<p class="text-center mt-3">Create an account? <a href="javascript:void(0);" @click="showContractorsSignUp" class="text-warning">Signup</a></p>
 		</div>
 	</div>
-
 </template>
 
 <script>
-		import TruckerLogin from './TruckerLogin';
-    export default {		
-			name: "SignupFormTrucker",
+		import ContractorsLogin from './ContractorsLogin';
+    export default {
+			name: "SignupFormContractors",
 			props: [ 'base_url' ],
 			components: {
-				TruckerLogin
+				ContractorsLogin
 			},
 			data(){
-				return{
+				return {
 					form: new Form({
 						email: '',
 						password: '',
@@ -60,21 +60,21 @@
 				}
 			},
 			methods: {
-				signupTrucker(){
+				signupContractors(){
 					let data = new FormData();
 					data.append('email', this.form.email)
 					data.append('password', this.form.password)
-					axios.post('/hakot/api/register/trucker', data).then(() => {
+					axios.post('/hakot/api/register/contractors', data).then(() => {
 						this.form.reset();
 					}).catch((error) => {
 						this.form.errors.record(error.response.data.errors);
 					});
 				},
-				showTruckerLogin(){
+				showContractorsLogin(){
 					this.showFormSignUp = !this.showFormSignUp;
 					this.showFormLogin = !this.showFormLogin;
 				},
-				showTruckerSignUp(){
+				showContractorsSignUp(){
 					this.showFormSignUp = !this.showFormSignUp;
 					this.showFormLogin = !this.showFormLogin;
 				},

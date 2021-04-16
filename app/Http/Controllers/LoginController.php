@@ -38,39 +38,54 @@ class LoginController extends Controller{
    
     public function __construct(){
             $this->middleware('guest')->except('logout');
-            $this->middleware('guest:contractor')->except('logout');
-            $this->middleware('guest:trucker')->except('logout');
+            $this->middleware('guest:contractors')->except('logout');
+            $this->middleware('guest:truckers')->except('logout');
     }
 
-     public function showContractorLoginForm(){
-        return view('auth.login', ['url' => 'contractor']);
+     public function showContractorsLoginForm(){
+        $logged_in = true;
+        $objT = Auth::guard('contractors')->user();
+        $objS = Auth::guard('truckers')->user();
+        if (is_null($objT) && is_null($objS)) {
+            $logged_in = false;
+        }
+        return view('auth.login', [
+            'url' => 'contractors', 
+            'logged_in' => $logged_in
+        ]);
     }
 
-    public function contractorLogin(Request $request){
+    public function contractorsLogin(Request $request){
         $this->validate($request, [
             'email'   => 'required|email',
             'password' => 'required|min:6'
         ]);
-        if (Auth::guard('contractor')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+        if (Auth::guard('contractors')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
 
-            return redirect()->intended('/contractor');
+            return redirect()->intended('/contractors');
         }
         return back()->withInput($request->only('email', 'remember'));
     }
 
-    public function showTruckerLoginForm(){
-        return view('auth.login', ['url' => 'trucker']);
+    public function showTruckersLoginForm(){
+        $logged_in = true;
+        $objT = Auth::guard('contractors')->user();
+        $objS = Auth::guard('truckers')->user();
+        if (is_null($objT) && is_null($objS)) {
+            $logged_in = false;
+        }
+        return view('auth.login', ['url' => 'truckers', 'logged_in' => $logged_in]);
     }
 
-    public function truckerLogin(Request $request){
+    public function truckersLogin(Request $request){
         $this->validate($request, [
             'email'   => 'required|email',
             'password' => 'required|min:6'
         ]);
 
-        if (Auth::guard('trucker')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+        if (Auth::guard('truckers')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
 
-            return redirect()->intended('/trucker');
+            return redirect()->intended('/truckers');
         }
         return back()->withInput($request->only('email', 'remember'));
     }

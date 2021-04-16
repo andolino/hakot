@@ -1,14 +1,14 @@
 <template>
   <div>
     <h2 class="text-center pb-3 font-weight-bold">Login In</h2>
-      <form @submit.prevent="loginContractor">
+      <form @submit.prevent="loginTruckers">
         <div class="form-group input-group mb-0">
             <input 
               type="email" 
               v-model="form.email" 
               :class="{'is-invalid' : form.errors.has('email')}" 
               class="form-control text-center input-custom font-14 mb-3" 
-              id="contractor-email" 
+              id="truckers-email" 
               name="email" 
               placeholder="Email">
         </div>
@@ -19,7 +19,7 @@
               v-model="form.password"
               :class="{'is-invalid' : form.errors.has('password')}" 
               class="form-control text-center input-custom font-14 mb-3" 
-              id="contractor-password" 
+              id="truckers-password" 
               name="password" 
               placeholder="Password">
         </div>
@@ -43,7 +43,7 @@
 
 <script>
     export default {
-      name: "ContractorLogin",
+      name: "TruckersLogin",
       props: [ 'base_url' ],
 			data(){
 				return{
@@ -55,13 +55,13 @@
 				}
 			},
 			methods: {
-				loginContractor(){
+				loginTruckers(){
 					let data = new FormData();
 					data.append('email', this.form.email)
 					data.append('password', this.form.password)
-					axios.post('/hakot/login/contractor', data).then((res) => {
+					axios.post('/hakot/login/truckers', data).then((res) => {
 						this.form.reset();
-            window.location.href = this.base_url + "/contractor";
+            window.location.href = this.base_url + "/truckers";
 					}).catch((error) => {
 						this.form.errors.record(error.response.data.errors);
 					});

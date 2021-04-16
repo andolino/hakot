@@ -18,32 +18,32 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/contractor-dashboard', function () {
-    return view('contractor-dashboard');
+Route::get('/contractors-dashboard', function () {
+    return view('contractors-dashboard');
 });
 
 
 Auth::routes();
 
 
-Route::get('/login/contractor', [LoginController::class, 'showContractorLoginForm']);
-Route::get('/login/trucker', [LoginController::class,'showTruckerLoginForm']);
-Route::get('/register/contractor', [RegisterController::class, 'showContractorRegisterForm']);
-Route::get('/register/trucker', [RegisterController::class,'showTruckerRegisterForm']);
+Route::get('/login/contractors', [LoginController::class, 'showContractorsLoginForm']);
+Route::get('/login/truckers', [LoginController::class,'showTruckersLoginForm']);
+Route::get('/register/contractors', [RegisterController::class, 'showContractorsRegisterForm']);
+Route::get('/register/truckers', [RegisterController::class,'showTruckersRegisterForm']);
 
-Route::post('/login/teachers', [LoginController::class,'contractorLogin']);
-Route::post('/login/students', [LoginController::class,'truckerLogin']);
-Route::post('/register/teachers', [RegisterController::class,'createContractor']);
-Route::post('/register/students', [RegisterController::class,'createTrucker']);
+Route::post('/login/contractors', [LoginController::class,'contractorsLogin']);
+Route::post('/login/truckers', [LoginController::class,'truckersLogin']);
+Route::post('/register/contractors', [RegisterController::class,'createContractors']);
+Route::post('/register/truckers', [RegisterController::class,'createTruckers']);
 
-Route::group(['middleware' => 'auth:contractor'], function () {
-    // Route::view('/contractor', 'contractor');
-    Route::get('/contractor', [HomeController::class, 'contractorDashboard']);
+Route::group(['middleware' => 'auth:contractors'], function () {
+    // Route::view('/contractors', 'contractors');
+    Route::get('/contractors', [HomeController::class, 'contractorsDashboard']);
 });
 
-Route::group(['middleware' => 'auth:trucker'], function () {
-    // Route::view('/trucker', 'trucker');
-    Route::get('/trucker', [HomeController::class, 'truckerDashboard']);
+Route::group(['middleware' => 'auth:truckers'], function () {
+    // Route::view('/truckers', 'truckers');
+    Route::get('/truckers', [HomeController::class, 'truckersDashboard']);
 });
 
 Route::get('logout', [LoginController::class,'logout']);

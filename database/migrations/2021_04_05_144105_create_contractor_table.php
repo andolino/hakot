@@ -13,7 +13,7 @@ class CreateContractorTable extends Migration
      */
     public function up()
     {
-        Schema::create('contractor', function (Blueprint $table) {
+        Schema::create('contractors', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
             $table->string('address')->nullable();
@@ -36,6 +36,6 @@ class CreateContractorTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contractor');
+        Schema::dropIfExists('contractors');
     }
 }

@@ -24,8 +24,8 @@ class HomeController extends Controller
      */
     public function index(){   
         $logged_in = true;
-        $objT = Auth::guard('contractor')->user();
-        $objS = Auth::guard('trucker')->user();
+        $objT = Auth::guard('contractors')->user();
+        $objS = Auth::guard('truckers')->user();
         if (is_null($objT) && is_null($objS)) {
             $logged_in = false;
         }
@@ -34,13 +34,13 @@ class HomeController extends Controller
                             ]);
     }
 
-    public function contractorDashboard(){
-        $data = DB::table('contractor')->where('id', '=', Auth::id())->first();
-        return view('contractor', ['data' => $data]);
+    public function contractorsDashboard(){
+        $data = DB::table('contractors')->where('id', '=', Auth::id())->first();
+        return view('contractors', ['data' => $data]);
     }
     
-    public function truckerDashboard(){
-        $data = DB::table('trucker')->where('id', '=', Auth::id())->get();
-        return view('trucker', ['data' => $data]);
+    public function truckersDashboard(){
+        $data = DB::table('truckers')->where('id', '=', Auth::id())->get();
+        return view('truckers', ['data' => $data]);
     }
 }

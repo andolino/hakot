@@ -8,8 +8,8 @@ require('./bootstrap');
 window.Vue = require('vue');
 import Form from './Form'
 import HomeSlider from './components/HomeSlider.vue';
-import SignupFormContractor from './components/SignupFormContractor.vue';
-import SignupFormTrucker from './components/SignupFormTrucker.vue';
+import SignupFormContractors from './components/SignupFormContractors.vue';
+import SignupFormTruckers from './components/SignupFormTruckers.vue';
 import { BootstrapVue, IconsPlugin, BCard } from 'bootstrap-vue'
 
 
@@ -49,8 +49,8 @@ const app = new Vue({
 	components: {
 		// 'todo-component':
 		'home-slider': HomeSlider,
-		'signup-form-contractor' : SignupFormContractor,
-		'signup-form-trucker' : SignupFormTrucker
+		'signup-form-contractors' : SignupFormContractors,
+		'signup-form-truckers' : SignupFormTruckers
 	}
 });
 

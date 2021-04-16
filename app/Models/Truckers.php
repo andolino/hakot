@@ -7,11 +7,11 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Trucker extends Authenticatable{
+class Truckers extends Authenticatable{
     // use HasFactory;
     use Notifiable;
 
-    protected $guard = 'trucker';
+    protected $guard = 'truckers';
     
     protected $fillable = [
         'email', 'password'

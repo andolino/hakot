@@ -1,4 +1,4 @@
-@extends('layouts.app-contractor-dashboard')
+@extends('layouts.app-contractors-dashboard')
 @section('content')
 	<div class="w-100 h-100 d-flex flex-column justify-content-center align-items-center">
 		<div class="row w-100 p-4">
